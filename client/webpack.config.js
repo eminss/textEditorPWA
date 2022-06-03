@@ -43,6 +43,10 @@ module.exports = () => {
           },
         ],
       }),
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'src-sw.js',
+      }),
       new WorkboxPlugin.GenerateSW(),
       new MiniCssExtractPlugin(),
     ],

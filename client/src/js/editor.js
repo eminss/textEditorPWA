@@ -29,7 +29,8 @@ export default class {
         throw err;
       } else {
         console.info('Loaded data from IndexedDB, injecting into editor');
-        this.editor.setValue(data || localData || header);
+        this.editor.setValue(data.jate || localData || header);
+        // this.editor.setValue(localData);
       }
     });
 

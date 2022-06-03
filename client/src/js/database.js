@@ -12,18 +12,18 @@ const initdb = async () =>
     },
   });
 
-  export const postDb = async (content) => {
-    console.log('Post to the ase');
-    const jateDb = await openDB('jate', 1);
-    const tx = jateDb.transaction('jate', 'readwrite');
-    const store = tx.objectStore('jate');
-    const request = store.add({ jate: content });
-    const result = await request;
-    console.log('🚀 - data saved to the database', result);
-  };
+  // export const postDb = async (content) => {
+  //   console.log('Post to the ase');
+  //   const jateDb = await openDB('jate', 1);
+  //   const tx = jateDb.transaction('jate', 'readwrite');
+  //   const store = tx.objectStore('jate');
+  //   const request = store.add({ jate: content });
+  //   const result = await request;
+  //   console.log('🚀 - data saved to the database', result);
+  // };
 
 // TODO: Add logic to a method that accepts some content and adds it to the database
-export const putDb = async (id, content) => {
+export const putDb = async (content) => {
   console.log('put to db');
 
   // Create a connection to the database database and version we want to use.
@@ -36,7 +36,7 @@ export const putDb = async (id, content) => {
   const store = tx.objectStore('jate');
 
   // Use the .add() method on the store and pass in the content.
-  const request = store.put({ id: id, jate: content });
+  const request = store.put({ id: 1, jate: content });
 
   // Get confirmation of the request.
   const result = await request;
@@ -58,7 +58,9 @@ export const getDb = async () => {
   const store = tx.objectStore('jate');
 
   // Use the .getAll() method to get all data in the database.
-  const request = store.getAll();
+  const request = store.get(1);
+
+  console.log(request);
 
   // Get confirmation of the request.
   const result = await request;
